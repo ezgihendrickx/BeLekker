@@ -1,0 +1,28 @@
+{
+  "name": "BeLekker",
+  "version": "1.0.0",
+  "description": "BeLekker is a social cooking app bringing people together who share their passion for food.",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.3.0",
+    "mongoose": "^5.10.11",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezgihendrickx/BeLekker.git"
+  },
+  "keywords": [],
+  "author": "Mattias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezgihendrickx/BeLekker/issues"
+  },
+  "homepage": "https://github.com/ezgihendrickx/BeLekker#readme"
+}
