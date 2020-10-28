@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     min: 6,
-    max: 1024,
+    max: 200,
   },
   email: {
     type: String,
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     max: 255,
   },
   dob: {
-    type: Date,
+    type: String,
     required: true,
     max: 20,
   },

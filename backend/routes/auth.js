@@ -1,35 +1,58 @@
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../model/User');
+const { registerValidation, loginValidation } = require('../validation');
 
-// ROUTE
+// REGISTER ROUTE
 router.post('/register', async (req, res) => {
   // Validate User Input
-  const { error } = await schema.validate({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    dob: req.body.dob,
-    password: req.body.password,
-    repeat_password: req.body.repeat_password,
-    email: req.body.email,
-  });
-
-  // If error show error to user
+  const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+
+  // Check if user exists in DB
+  const userExist = await User.findOne({ email: req.body.email });
+  if (userExist)
+    return res.status(400).send(`User already exists for ${req.body.email}`);
+
+  // Hash Password
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(req.body.password, salt);
 
   // If no error save info to database
   const user = new User({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
-    password: req.body.password,
+    password: hashPassword,
     dob: req.body.dob,
     email: req.body.email,
   });
   try {
     const savedUser = await user.save();
-    res.send(savedUser);
+    res.send({ user: user.id });
   } catch (err) {
     res.status(400).send(error);
   }
+});
+
+// LOGIN ROUTE
+router.post('/login', async (req, res) => {
+  // Validate User Credentials
+  const { error } = loginValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  // Check if user exists in DB
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(400).send("User doesn't exist");
+
+  // Check if password is correct
+  const validPassword = await bcrypt.compare(req.body.password, user.password);
+  if (!validPassword)
+    return res.status(400).send('Incorrect email or password');
+
+  // Create & assign JWToken
+  const token = await jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  res.header('auth-token', token).send(`Login successfully ${token}`);
 });
 
 module.exports = router;
