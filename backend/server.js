@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-// Routes
-const authRoute = require('./routes/auth');
+const homeRoute = require('./routes/home');
+const registerRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
 
 // DB Connect
@@ -11,14 +11,13 @@ mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true }, () =>
   console.log('DB connected!')
 );
 
-app.get('/', (req, res) => {
-  res.send('API operational ✅');
-});
-
-// Middelware
+// Routes
 app.use(express.json());
-// Route Middlewares
-app.use('/api/user', authRoute);
+app.use('/', homeRoute);
+app.use('/api/user', registerRoute);
 app.use('/api/posts', postRoute);
 
-app.listen(3000, () => console.log('Server Running! (port 3000)'));
+// Initiate Server
+app.listen(process.env.PORT || 3000, () =>
+  console.log(`Server Running! (port ${process.env.PORT})`)
+);

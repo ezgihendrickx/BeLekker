@@ -1,0 +1,43 @@
+############
+### REGISTER
+POST http://localhost:3000/api/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Mattias",
+    "last_name": "Bonte",
+    "password": "becode2020",
+    "repeat_password": "becode2020",
+    "dob": "15031990",
+    "email": "mattias_bonte@hotmail.com",
+    "repeat_email": "mattias_bonte@hotmail.com"
+}
+
+
+
+#########
+### LOGIN
+POST http://localhost:3000/api/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "mattias_bonte@hotmail.com",
+    "password": "becode2020"
+}
+
+
+
+########
+### HOME
+GET http://localhost:3000/ HTTP/1.1
+
+
+
+###############
+### CHECK LOGIN
+### Bad token
+GET http://localhost:3000/api/posts? HTTP/1.1
+auth-token: eyJhbGciOiJIkzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjk5NDAyZmM2OTlmMmU2YTFlNGVhYWYiLCJpYXQiOjE2MDM5MDk4NTR9.0A5Cbnwx5nKLei4jkI5UkVS7kAxTP7FIwxb-qLGMEaE
+### Good token
+GET http://localhost:3000/api/posts? HTTP/1.1
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjk5NDAyZmM2OTlmMmU2YTFlNGVhYWYiLCJpYXQiOjE2MDM5MDk4NTR9.0A5Cbnwx5nKLei4jkI5UkVS7kAxTP7FIwxb-qLGMEaE
