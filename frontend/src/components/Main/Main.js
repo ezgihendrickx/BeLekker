@@ -1,13 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
-
+import Register from "./Register";
 function Main() {
   return (
-    <div className="Main">
-      <nav class="relative flex items-center justify-between h-12"></nav>
-      <main class="main bg-gradient-to-tr">
-        {/* <img class="block h-8 w-auto" src="/img/logo.png" alt="logo" /> */}
-      </main>
-    </div>
+    <main
+      class="h-screen place-content-center"
+      style={{
+        //backgroundImage: `url(https://i1.wp.com/blog.hellofresh.com/wp-content/uploads/2017/03/cookingtogether.jpg?ssl=1)`,
+        //backgroundImage: `url(${cooktogether})`,
+        backgroundImage: `url(img/cooktogether.png)`,
+        backgroundSize: `100%`,
+      }}
+    >
+      <Register />
+    </main>
   );
 }
 
