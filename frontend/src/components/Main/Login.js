@@ -1,48 +1,35 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 // COMPONENT
-function Login() {
-  //STATE
-  const [input, setInput] = useState({});
-
+function Login({ saveAuthToken }) {
   //FUNCTIONS
-  const setUserInput = (e) => {
+  const loginUser = (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
     e.target.password.value = '';
 
-    setInput({
-      email: email,
-      password: password,
-    });
-
-    axios({
-      method: 'POST',
-      url: 'http://localhost:3000/api/user/login',
-      data: {
+    //API LOGIN
+    axios
+      .post('http://localhost:3000/api/user/login', {
         email: email,
         password: password,
-      },
-      headers: { 'X-CSRFToken': csrfToken },
-    });
-    /* axios
-      .post(
-        '/api/user/login',
-        {
-          email: email,
-          password: password,
-        },
-        JSON
-      )
+      })
       .then(function (response) {
-        console.log(response);
+        if (response.data.token) {
+          console.log(response.data.message);
+          saveAuthToken(response.data.token);
+        } else {
+          console.log(response.data);
+          saveAuthToken('');
+        }
       })
       .catch(function (error) {
         console.log(error);
-      }); */
+        saveAuthToken('');
+      });
   };
 
   //RENDER JSX
@@ -57,7 +44,7 @@ function Login() {
             Cooking Together App
           </h2>
         </div>
-        <form className='mt-8' action='' onSubmit={setUserInput}>
+        <form className='mt-8' action='' onSubmit={loginUser}>
           <input type='hidden' name='remember' value='true' />
           <div className='rounded-md shadow-sm'>
             <div>

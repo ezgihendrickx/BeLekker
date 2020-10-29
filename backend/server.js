@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const homeRoute = require('./routes/home');
 const registerRoute = require('./routes/auth');
@@ -12,7 +13,7 @@ mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true }, () =>
 );
 
 // Routes
-app.use(express.json());
+app.use(express.json(), cors());
 app.use('/', homeRoute);
 app.use('/api/user', registerRoute);
 app.use('/api/posts', postRoute);

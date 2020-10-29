@@ -43,20 +43,22 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   // Validate User Credentials
   const { error } = loginValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.send(error.details[0].message);
 
   // Check if user exists in DB
   const user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).send("User doesn't exist");
+  if (!user) return res.send("User doesn't exist");
 
   // Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword)
-    return res.status(400).send('Incorrect email or password');
+  if (!validPassword) return res.send('Incorrect email or password');
 
   // Create & assign JWToken
   const token = await jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header('auth-token', token).send(`Login successfully ${token}`);
+  res.header('auth-token', token).send({
+    message: 'Login successfully',
+    token: token,
+  });
 });
 
 module.exports = router;
