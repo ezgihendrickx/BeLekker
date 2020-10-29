@@ -2,9 +2,11 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../model/User');
-const { registerValidation, loginValidation } = require('../validation');
+const { registerValidation, loginValidation } = require('./validation');
 
-// REGISTER ROUTE
+//---------------------//
+// REGISTER Controller //
+//---------------------//
 router.post('/register', async (req, res) => {
   // Validate User Input
   const { error } = registerValidation(req.body);
@@ -29,13 +31,15 @@ router.post('/register', async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    res.send({ user: user.id });
+    res.send(`New user created for ${req.body.email}`);
   } catch (err) {
     res.status(400).send(error);
   }
 });
 
-// LOGIN ROUTE
+//------------------//
+// LOGIN Controller //
+//------------------//
 router.post('/login', async (req, res) => {
   // Validate User Credentials
   const { error } = loginValidation(req.body);

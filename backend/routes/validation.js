@@ -16,9 +16,11 @@ const registerValidation = (data) => {
         tlds: { allow: true },
       })
       .required(),
+    repeat_email: Joi.ref('email'),
   })
     .with('first_name', 'last_name')
-    .with('password', 'repeat_password');
+    .with('password', 'repeat_password')
+    .with('email', 'repeat_email');
 
   return schema.validate(data);
 };
