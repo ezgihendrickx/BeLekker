@@ -2,12 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 // COMPONENT
-function Login() {
-  //STATE
-  const [input, setInput] = useState({});
-
+function Login({ saveAuthToken }) {
   //FUNCTIONS
-  const setUserInput = (e) => {
+  const loginUser = (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
@@ -28,9 +25,9 @@ function Login() {
       },
       headers: { "X-CSRFToken": csrfToken },
     });
-    /* axios
+    axios
       .post(
-        '/api/user/login',
+        "/api/user/login",
         {
           email: email,
           password: password,
@@ -38,11 +35,18 @@ function Login() {
         JSON
       )
       .then(function (response) {
-        console.log(response);
+        if (response.data.token) {
+          console.log(response.data.message);
+          saveAuthToken(response.data.token);
+        } else {
+          console.log(response.data);
+          saveAuthToken("");
+        }
       })
       .catch(function (error) {
         console.log(error);
-      }); */
+        saveAuthToken("");
+      });
   };
 
   //RENDER JSX
@@ -139,5 +143,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;

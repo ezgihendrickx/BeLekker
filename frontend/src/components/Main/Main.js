@@ -6,6 +6,11 @@ function Main() {
   //STATE
   const [authToken, setAuthToken] = useState("");
 
+  //FUNCTIONS
+  const saveAuthToken = (token) => {
+    setAuthToken(token);
+  };
+
   //RENDER JSX
   return (
     <main className="place-content-center bg-cook-together h-screen bg-no-repeat bg-cover">
