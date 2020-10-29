@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
     email: req.body.email,
   });
   try {
-    const savedUser = await user.save();
+    await user.save();
     res.send(`New user created for ${req.body.email}`);
   } catch (err) {
     res.send(error);

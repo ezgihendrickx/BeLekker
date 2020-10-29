@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Popup from '../UI/Popup';
 
 //COMPONENT
 function Register({ setPage }) {
+  //STATE
+  const [popup, setPopup] = useState({
+    active: false,
+    type: '',
+    message: '',
+  });
+
   //FUNCTIONS
   const changePage = () => {
     setPage('login');
@@ -40,10 +48,18 @@ function Register({ setPage }) {
         repeat_email: repeat_email,
       })
       .then(function (response) {
-        console.log(response.data);
+        setPopup({
+          active: true,
+          type: 'Yellow',
+          message: response.data,
+        });
       })
       .catch(function (error) {
-        console.log(error);
+        setPopup({
+          active: true,
+          type: 'Yellow',
+          message: error,
+        });
       });
   };
 
@@ -159,6 +175,11 @@ function Register({ setPage }) {
             </button>
           </div>
         </form>
+
+        <div>
+          {popup.active ? <Popup popup={popup} setPopup={setPopup} /> : ''}
+        </div>
+
         <div
           className='flex items-center justify-center mt-10 text-sm leading-5'
           onClick={changePage}

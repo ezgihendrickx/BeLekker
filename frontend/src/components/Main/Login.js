@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import Popup from '../UI/Popup';
 
 //COMPONENT
 function Login({ saveAuthToken, setPage }) {
+  //STATE
+  const [popup, setPopup] = useState({
+    active: false,
+    type: '',
+    message: '',
+  });
+
   //FUNCTIONS
   const changePage = () => {
     setPage('register');
@@ -22,15 +30,27 @@ function Login({ saveAuthToken, setPage }) {
       })
       .then(function (response) {
         if (response.data.token) {
-          console.log(response.data.message);
+          setPopup({
+            active: true,
+            type: 'Green',
+            message: response.data.message,
+          });
           saveAuthToken(response.data.token);
         } else {
-          console.log(response.data);
+          setPopup({
+            active: true,
+            type: 'Red',
+            message: response.data,
+          });
           saveAuthToken('');
         }
       })
       .catch(function (error) {
-        console.log(error);
+        setPopup({
+          active: true,
+          type: 'Red',
+          message: response.data,
+        });
         saveAuthToken('');
       });
   };
@@ -120,6 +140,11 @@ function Login({ saveAuthToken, setPage }) {
             </button>
           </div>
         </form>
+
+        <div>
+          {popup.active ? <Popup popup={popup} setPopup={setPopup} /> : ''}
+        </div>
+
         <div
           className='flex items-center justify-center mt-16 text-sm leading-5'
           onClick={changePage}
