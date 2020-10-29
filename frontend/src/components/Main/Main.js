@@ -6,19 +6,11 @@ function Main() {
   //STATE
   const [authToken, setAuthToken] = useState('');
 
-  //RENDER
+  //RENDER JSX
   return (
-    <main
-      className='place-content-center h-screen'
-      style={{
-        backgroundImage: `url(img/cooktogether.png)`,
-        backgroundSize: `100%`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
+    <main className='place-content-center bg-cook-together h-screen bg-no-repeat bg-cover'>
       <Login />
-      <Register />
+      {/* <Register /> */}
     </main>
   );
 }

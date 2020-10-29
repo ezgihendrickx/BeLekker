@@ -1,21 +1,51 @@
 import React, { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
+
+// COMPONENT
 function Login() {
   //STATE
-  const [input, setInput] = useState({ email: '', password: '' });
+  const [input, setInput] = useState({});
 
   //FUNCTIONS
   const setUserInput = (e) => {
     e.preventDefault();
-    setInput({
-      email: e.target.email.value,
-      password: e.target.password.value,
-    });
-    console.log(input);
-    e.target.email.value = '';
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     e.target.password.value = '';
+
+    setInput({
+      email: email,
+      password: password,
+    });
+
+    axios({
+      method: 'POST',
+      url: 'http://localhost:3000/api/user/login',
+      data: {
+        email: email,
+        password: password,
+      },
+      headers: { 'X-CSRFToken': csrfToken },
+    });
+    /* axios
+      .post(
+        '/api/user/login',
+        {
+          email: email,
+          password: password,
+        },
+        JSON
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      }); */
   };
 
-  //RENDER
+  //RENDER JSX
   return (
     <div className='bg-gray-50 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen px-4 py-12'>
       <div className='w-full max-w-md'>
@@ -35,9 +65,9 @@ function Login() {
                 aria-label='Email address'
                 name='email'
                 type='email'
-                required
                 className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                 placeholder='Email address'
+                required
               />
             </div>
             <div className='mt-5'>
@@ -45,9 +75,9 @@ function Login() {
                 aria-label='Password'
                 name='password'
                 type='password'
-                required
                 className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                 placeholder='Password'
+                required
               />
             </div>
           </div>

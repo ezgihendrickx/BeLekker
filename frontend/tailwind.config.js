@@ -11,7 +11,11 @@ module.exports = {
     'public/**/*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: (theme) => ({
+        'cook-together': "url('../img/cooktogether.png')",
+      }),
+    },
   },
   variants: {},
   plugins: [],
