@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const homeRoute = require('./routes/home');
+const indexRoute = require('./routes/index');
 const registerRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
 
@@ -15,7 +15,7 @@ mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true }, () =>
 
 // Routes
 app.use(express.json(), cors());
-app.use('/', homeRoute);
+app.use('/', indexRoute);
 app.use('/api/user', registerRoute);
 app.use('/api/posts', postRoute);
 

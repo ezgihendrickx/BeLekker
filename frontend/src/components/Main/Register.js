@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 //COMPONENT
-function Register() {
+function Register({ setPage }) {
   //FUNCTIONS
+  const changePage = () => {
+    setPage('login');
+  };
+
   const registerUser = (e) => {
     e.preventDefault();
     const [
@@ -155,7 +159,10 @@ function Register() {
             </button>
           </div>
         </form>
-        <div className='flex items-center justify-center mt-10 text-sm leading-5'>
+        <div
+          className='flex items-center justify-center mt-10 text-sm leading-5'
+          onClick={changePage}
+        >
           <footer className='hover:text-red-600 focus:outline-none focus:underline font-medium text-gray-900 transition duration-150 ease-in-out cursor-pointer'>
             Already have an account <strong>Login</strong>
           </footer>

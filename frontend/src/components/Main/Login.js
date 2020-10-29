@@ -2,8 +2,12 @@ import React from 'react';
 import axios from 'axios';
 
 //COMPONENT
-function Login({ saveAuthToken }) {
+function Login({ saveAuthToken, setPage }) {
   //FUNCTIONS
+  const changePage = () => {
+    setPage('register');
+  };
+
   const loginUser = (e) => {
     e.preventDefault();
 
@@ -116,7 +120,10 @@ function Login({ saveAuthToken }) {
             </button>
           </div>
         </form>
-        <div className='flex items-center justify-center mt-16 text-sm leading-5'>
+        <div
+          className='flex items-center justify-center mt-16 text-sm leading-5'
+          onClick={changePage}
+        >
           <footer className='hover:text-red-600 focus:outline-none focus:underline font-medium text-gray-900 transition duration-150 ease-in-out cursor-pointer'>
             Don't have an account <strong>Sign Up</strong>
           </footer>

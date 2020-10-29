@@ -5,6 +5,7 @@ import Register from './Register';
 function Main() {
   //STATE
   const [authToken, setAuthToken] = useState('');
+  const [page, setPage] = useState('login');
 
   //FUNCTIONS
   const saveAuthToken = (token) => {
@@ -14,8 +15,11 @@ function Main() {
   //RENDER JSX
   return (
     <main className='place-content-center bg-cook-together h-screen bg-no-repeat bg-cover'>
-      <Login saveAuthToken={saveAuthToken} />
-      <Register />
+      {page === 'login' ? (
+        <Login saveAuthToken={saveAuthToken} setPage={setPage} />
+      ) : (
+        <Register setPage={setPage} />
+      )}
     </main>
   );
 }
