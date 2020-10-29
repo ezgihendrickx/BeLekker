@@ -10,12 +10,11 @@ const { registerValidation, loginValidation } = require('./validation');
 router.post('/register', async (req, res) => {
   // Validate User Input
   const { error } = registerValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.send(error.details[0].message);
 
   // Check if user exists in DB
   const userExist = await User.findOne({ email: req.body.email });
-  if (userExist)
-    return res.status(400).send(`User already exists for ${req.body.email}`);
+  if (userExist) return res.send(`User already exists for ${req.body.email}`);
 
   // Hash Password
   const salt = await bcrypt.genSalt(10);
@@ -33,7 +32,7 @@ router.post('/register', async (req, res) => {
     const savedUser = await user.save();
     res.send(`New user created for ${req.body.email}`);
   } catch (err) {
-    res.status(400).send(error);
+    res.send(error);
   }
 });
 

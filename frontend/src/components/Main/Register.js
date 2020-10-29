@@ -1,7 +1,48 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+import axios from 'axios';
 
+//COMPONENT
 function Register() {
+  //FUNCTIONS
+  const registerUser = (e) => {
+    e.preventDefault();
+    const [
+      first_name,
+      last_name,
+      password,
+      repeat_password,
+      dob,
+      email,
+      repeat_email,
+    ] = [
+      e.target.first_name.value,
+      e.target.last_name.value,
+      e.target.password.value,
+      e.target.repeat_password.value,
+      e.target.dob.value,
+      e.target.email.value,
+      e.target.repeat_email.value,
+    ];
+
+    //API REGISTER
+    axios
+      .post('http://localhost:3000/api/user/register', {
+        first_name: first_name,
+        last_name: last_name,
+        password: password,
+        repeat_password: repeat_password,
+        dob: dob,
+        email: email,
+        repeat_email: repeat_email,
+      })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   //RENDER JSX
   return (
     <div className='bg-gray-50 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen px-4 py-12'>
@@ -14,84 +55,80 @@ function Register() {
             Cooking Together App
           </h2>
         </div>
-        <form className='mt-8' action='#' method='POST'>
+        <form className='mt-8' action='' onSubmit={registerUser}>
           <input type='hidden' name='remember' value='true' />
           <div className='rounded-md shadow-sm'>
             <div className=' grid grid-cols-2'>
               <div>
                 <input
-                  aria-label='First Name'
-                  name='firstname'
-                  type='firstname'
-                  required
+                  name='first_name'
+                  type='text'
                   className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                   placeholder='First Name'
+                  aria-label='First Name'
+                  required
                 />
               </div>
               <div className='ml-3'>
                 <input
-                  aria-label='Last Name'
-                  name='lastname'
-                  type='lastname'
-                  required
+                  name='last_name'
+                  type='text'
                   className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                   placeholder='Last Name'
+                  aria-label='Last Name'
+                  required
                 />
               </div>
             </div>
             <div className='mt-5'>
               <input
-                aria-label='Password'
                 name='password'
                 type='password'
+                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Password'
+                aria-label='Password'
                 required
-                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
-                placeholder='Password'
-                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
-                placeholder='Password'
               />
             </div>
             <div className='mt-5'>
               <input
-                placeholder='Repeat Password'
-                aria-label='repeatpassword'
-                name='repeatpassword'
-                type='repeatpassword'
-                required
+                name='repeat_password'
+                type='password'
                 className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                 placeholder='Repeat Password'
+                aria-label='Repeat Password'
+                required
               />
             </div>
             <div className='mt-5'>
               <input
-                placeholder='Date of Birth'
-                aria-label='dob'
                 name='dob'
-                type='dob'
-                required
+                type='date'
                 className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                 placeholder='Date of Birth'
+                aria-label='Date of Birth'
+                required
               />
             </div>
 
             <div className='mt-5'>
               <input
-                aria-label='Email Address'
                 name='email'
                 type='email'
-                required
                 className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                 placeholder='Email Address'
+                aria-label='Email Address'
+                required
               />
             </div>
             <div className='mt-5'>
               <input
-                aria-label='Repeat Email Address'
-                name='repeatemail'
-                type='repeatemail'
-                required
+                name='repeat_email'
+                type='email'
                 className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
                 placeholder='Repeat Email Address'
+                aria-label='Repeat Email Address'
+                required
               />
             </div>
           </div>

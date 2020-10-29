@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
-// COMPONENT
+//COMPONENT
 function Login({ saveAuthToken }) {
   //FUNCTIONS
   const loginUser = (e) => {
     e.preventDefault();
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const [email, password] = [e.target.email.value, e.target.password.value];
     e.target.password.value = '';
 
     //API LOGIN
