@@ -3,16 +3,12 @@ import Login from "./Login";
 import Register from "./Register";
 
 function Main() {
+  //STATE
+  const [authToken, setAuthToken] = useState("");
+
+  //RENDER JSX
   return (
-    <main
-      class="h-screen place-content-center"
-      style={{
-        //backgroundImage: `url(https://i1.wp.com/blog.hellofresh.com/wp-content/uploads/2017/03/cookingtogether.jpg?ssl=1)`,
-        //backgroundImage: `url(${cooktogether})`,
-        backgroundImage: `url(img/cooktogether.png)`,
-        backgroundSize: `100%`,
-      }}
-    >
+    <main className="place-content-center bg-cook-together h-screen bg-no-repeat bg-cover">
       <Login />
       <Register />
     </main>
