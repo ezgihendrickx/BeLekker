@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-function Register() {
+function Login() {
   return (
     <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full">
@@ -79,13 +79,18 @@ function Register() {
                   />
                 </svg>
               </span>
-              REGISTER
+              LOGIN
             </button>
           </div>
         </form>
+        <div class="text-sm leading-5 mt-16 flex items-center justify-center">
+          <footer class="cursor-pointer font-medium text-gray-900 hover:text-red-600 focus:outline-none focus:underline transition ease-in-out duration-150">
+            Don't have an account <strong>Sign Up</strong>
+          </footer>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Register;
+export default Login;

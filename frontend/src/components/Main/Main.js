@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Register from "./Register";
+import Login from "./Login";
 function Main() {
   return (
     <main
@@ -11,7 +11,7 @@ function Main() {
         backgroundSize: `100%`,
       }}
     >
-      <Register />
+      <Login />
     </main>
   );
 }
