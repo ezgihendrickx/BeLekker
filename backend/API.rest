@@ -9,8 +9,8 @@ content-type: application/json
     "password": "becode2020",
     "repeat_password": "becode2020",
     "dob": "15031990",
-    "email": "mattias_bonte@hotmail.com",
-    "repeat_email": "mattias_bonte@hotmail.com"
+    "email": "mattias_bbonte@hotmail.com",
+    "repeat_email": "mattias_bbonte@hotmail.com"
 }
 
 

@@ -1,125 +1,116 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
 
 function Register() {
   //RENDER JSX
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full">
+    <div className='bg-gray-50 sm:px-6 lg:px-8 flex items-center justify-center min-h-screen px-4 py-12'>
+      <div className='w-full max-w-md'>
         <div>
-          <h1 className="mt-6 text-center text-5xl leading-9 font-extrabold text-red-800">
+          <h1 className='mt-6 text-5xl font-extrabold leading-9 text-center text-red-800'>
             BeLekker
           </h1>
-          <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+          <h2 className='mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900'>
             Cooking Together App
           </h2>
         </div>
-        <form className="mt-8" action="#" method="POST">
-          <input type="hidden" name="remember" value="true" />
-          <div className="rounded-md shadow-sm">
-            <div className="grid grid-cols-2  ">
+        <form className='mt-8' action='#' method='POST'>
+          <input type='hidden' name='remember' value='true' />
+          <div className='rounded-md shadow-sm'>
+            <div className=' grid grid-cols-2'>
               <div>
                 <input
-                  aria-label="First Name"
-                  name="firstname"
-                  type="firstname"
+                  aria-label='First Name'
+                  name='firstname'
+                  type='firstname'
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                  placeholder="First Name"
+                  className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                  placeholder='First Name'
                 />
               </div>
-              <div className="ml-3">
+              <div className='ml-3'>
                 <input
-                  aria-label="Last Name"
-                  name="lastname"
-                  type="lastname"
+                  aria-label='Last Name'
+                  name='lastname'
+                  type='lastname'
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                  placeholder="Last Name"
+                  className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                  placeholder='Last Name'
                 />
               </div>
             </div>
-            <div className="mt-5">
+            <div className='mt-5'>
               <input
-                aria-label="Password"
-                name="password"
-                type="password"
+                aria-label='Password'
+                name='password'
+                type='password'
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                placeholder="Password"
-                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                placeholder="Password"
+                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Password'
+                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Password'
               />
             </div>
-            <div className="mt-5">
+            <div className='mt-5'>
               <input
-                placeholder="Repeat Password"
-                aria-label="repeatpassword"
-                name="repeatpassword"
-                type="repeatpassword"
+                placeholder='Repeat Password'
+                aria-label='repeatpassword'
+                name='repeatpassword'
+                type='repeatpassword'
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                placeholder="Repeat Password"
+                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Repeat Password'
               />
             </div>
-            <div className="mt-5">
+            <div className='mt-5'>
               <input
-                placeholder="Date of Birth"
-                aria-label="dob"
-                name="dob"
-                type="dob"
+                placeholder='Date of Birth'
+                aria-label='dob'
+                name='dob'
+                type='dob'
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                placeholder="Date of Birth"
+                className='rounded-b-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Date of Birth'
               />
             </div>
 
-            <div className="mt-5">
+            <div className='mt-5'>
               <input
-                aria-label="Email Address"
-                name="email"
-                type="email"
+                aria-label='Email Address'
+                name='email'
+                type='email'
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                placeholder="Email Address"
+                className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Email Address'
               />
             </div>
-            <div className="mt-5">
+            <div className='mt-5'>
               <input
-                aria-label="Repeat Email Address"
-                name="repeatemail"
-                type="repeatemail"
+                aria-label='Repeat Email Address'
+                name='repeatemail'
+                type='repeatemail'
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5"
-                placeholder="Repeat Email Address"
+                className='rounded-t-md focus:outline-none focus:shadow-outline-red focus:border-red-300 focus:z-10 sm:text-sm sm:leading-5 relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none'
+                placeholder='Repeat Email Address'
               />
-            </div>
-          </div>
-          <div className="mt-6 flex items-center justify-between">
-            <div className="text-sm leading-5">
-              <a
-                href="#"
-                className="font-medium text-red-800 hover:text-red-600 focus:outline-none focus:underline transition ease-in-out duration-150"
-              >
-                Forgot your password?
-              </a>
             </div>
           </div>
 
-          <div class="mt-6">
+          <div className='mt-6'>
             <button
-              type="submit"
-              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-800 hover:bg-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition duration-150 ease-in-out"
+              type='submit'
+              className='group hover:bg-red-600 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-red-800 border border-transparent rounded-md'
             >
-              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              <span className='absolute inset-y-0 left-0 flex items-center pl-3'>
                 <svg
-                  class="h-5 w-5 text-red-300 group-hover:text-red-400 transition ease-in-out duration-150"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+                  className='group-hover:text-red-400 w-5 h-5 text-red-300 transition duration-150 ease-in-out'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
                 >
                   <path
-                    fill-rule="evenodd"
-                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                    clip-rule="evenodd"
+                    fillRule='evenodd'
+                    d='M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z'
+                    clipRule='evenodd'
                   />
                 </svg>
               </span>
@@ -127,8 +118,8 @@ function Register() {
             </button>
           </div>
         </form>
-        <div className="text-sm leading-5 mt-10 flex items-center justify-center">
-          <footer className="cursor-pointer font-medium text-gray-900 hover:text-red-600 focus:outline-none focus:underline transition ease-in-out duration-150">
+        <div className='flex items-center justify-center mt-10 text-sm leading-5'>
+          <footer className='hover:text-red-600 focus:outline-none focus:underline font-medium text-gray-900 transition duration-150 ease-in-out cursor-pointer'>
             Already have an account <strong>Login</strong>
           </footer>
         </div>
