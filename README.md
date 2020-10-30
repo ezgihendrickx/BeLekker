@@ -13,7 +13,7 @@
 </p>
 
 <h2 align="center">
-  <a href="https://intro-vue-mattias.netlify.app/" target="_blank">🌐 Live Version</a>
+  <a href="https://belekker2020.netlify.app/" target="_blank">🌐 Live Version</a>
 </h2>
 <br/>
 <h4 align="center">
