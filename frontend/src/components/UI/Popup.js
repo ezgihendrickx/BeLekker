@@ -16,7 +16,7 @@ function Alert({ popup, setPopup }) {
       <div
         onClick={resetPopup}
         className={`flex items-center rounded-lg px-4 py-3 text-sm font-bold cursor-pointer
-        ${popup.type === 'Red' ? 'bg-red-400 text-red-100' : ''}
+        ${popup.type === 'Red' ? 'bg-red-600 text-red-100' : ''}
         ${popup.type === 'Green' ? 'bg-green-500 text-white' : ''}
         ${popup.type === 'Yellow' ? 'bg-yellow-500 text-black' : ''}`}
         role='alert'

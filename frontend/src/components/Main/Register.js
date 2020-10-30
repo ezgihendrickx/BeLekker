@@ -57,7 +57,7 @@ function Register({ setPage }) {
       .catch(function (error) {
         setPopup({
           active: true,
-          type: 'Yellow',
+          type: 'Red',
           message: error,
         });
       });

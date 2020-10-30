@@ -7,12 +7,13 @@
   <a href="https://nodejs.org/en/" target="_blank">
     <img alt="Badge Node.js" src="https://img.shields.io/badge/NODE-green?style=flat&logo=node.js" />
   </a>
+  <a href="https://tailwindcss.com/" target="_blank">
+    <img alt="Badge Tailwindcss" src="https://img.shields.io/badge/TAILWIND-blue?style=flat&logo=tailwind-css" />
+  </a>
 </p>
 
 <h2 align="center">
-  <a href="https://intro-vue-mattias.netlify.app/" target="_blank">🌐 Live</a>
-  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://github.com/ezgihendrickx/BeLekker#readme" target="_blank">📂 Repo</a>
+  <a href="https://intro-vue-mattias.netlify.app/" target="_blank">🌐 Live Version</a>
 </h2>
 <br/>
 <h4 align="center">
@@ -46,13 +47,20 @@
 
 [![VSCODE](https://img.shields.io/badge/VSCODE-black?style=flat&logo=visual-studio-code)](https://code.visualstudio.com/)
 [![MARKDOWN](https://img.shields.io/badge/MARKDOWN-black?style=flat&logo=markdown)](https://www.markdownguide.org/)
-[![HTML5](https://img.shields.io/badge/HTML5-red?style=flat&logo=html5&logoColor=white)](https://html.com/)
 [![REACT](https://img.shields.io/badge/REACT-yellow?style=flat&logo=react)](https://reactjs.org/)
-[![PHP](https://img.shields.io/badge/NODE-green?style=flat&logo=node.js)](https://nodejs.org/en/)
+[![NODE](https://img.shields.io/badge/NODE-green?style=flat&logo=node.js)](https://nodejs.org/en/)
+[![TAILWIND](https://img.shields.io/badge/TAILWIND-blue?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 
-## Modules 📚
+## Packages 🧱
 
+- [Dotenv](https://www.npmjs.com/package/dotenv)
 - [Nodemon](https://nodemon.io/)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Cors](https://nodemon.io/)
+- [Joi](https://www.npmjs.com/package/joi)
+- [Bcryptjs](https://www.npmjs.com/package/bcryptjs)
+- [JWT](https://www.npmjs.com/package/jsonwebtoken)
 
 # License 📎
 
