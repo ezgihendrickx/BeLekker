@@ -13,7 +13,9 @@
 </p>
 
 <h2 align="center">
-  <a href="https://belekkerlive.netlify.app/" target="_blank">🌐 Live Version</a>
+  <a href="https://belekkerlive.netlify.app/" target="_blank">🌐 Live</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://warm-wildwood-79594.herokuapp.com/" target="_blank">🤖 API</a>
 </h2>
 <br/>
 <h4 align="center">
