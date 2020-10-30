@@ -24,7 +24,7 @@ function Login({ saveAuthToken, setPage }) {
 
     //API LOGIN
     axios
-      .post('http://localhost:3000/api/user/login', {
+      .post('https://warm-wildwood-79594.herokuapp.com/api/user/login', {
         email: email,
         password: password,
       })

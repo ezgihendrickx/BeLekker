@@ -38,7 +38,7 @@ function Register({ setPage }) {
 
     //API REGISTER
     axios
-      .post('http://localhost:3000/api/user/register', {
+      .post('https://warm-wildwood-79594.herokuapp.com/api/user/register', {
         first_name: first_name,
         last_name: last_name,
         password: password,
